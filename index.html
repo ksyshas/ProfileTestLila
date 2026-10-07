@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fbf8f2">
+    <meta name="description"
+        content="Lila — агентство блогеров и креаторов. Помогаем талантам расти, а брендам — находить свой голос.">
+    <title>Lila — агентство блогеров</title>
+    <style>
+        :root {
+            --cream: #fbf8f2;
+            --paper: #fffdf9;
+            --lilac: #e9def1;
+            --lavender: #d7c2e5;
+            --purple: #76518a;
+            --deep: #302438;
+            --muted: #756d79;
+            --peach: #f3d9c8;
+            --line: rgba(48, 36, 56, .12);
+            --serif: Georgia, 'Times New Roman', serif;
+            --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 92px;
+        }
+
+        body {
+            margin: 0;
+            color: var(--deep);
+            background: var(--cream);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            width: min(1160px, calc(100% - 48px));
+            margin-inline: auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(251, 248, 242, .88);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(48, 36, 56, .08);
+        }
+
+        .nav {
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 750;
+            letter-spacing: -.06em;
+        }
+
+        .brand-mark {
+            width: 31px;
+            height: 31px;
+            display: grid;
+            place-items: center;
+            border-radius: 50% 50% 50% 8px;
+            color: white;
+            background: var(--purple);
+            font-family: var(--serif);
+            font-size: 20px;
+            transform: rotate(-8deg);
+        }
+
+        .brand-mark span {
+            transform: rotate(8deg);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            color: #615967;
+            font-size: 13px;
+            font-weight: 550;
+        }
+
+        .nav-links a {
+            transition: color .2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+
+        .nav-cta,
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--deep);
+            color: white;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 650;
+            padding: 14px 21px;
+            transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+        }
+
+        .nav-cta:hover,
+        .button:hover {
+            transform: translateY(-3px);
+            background: var(--purple);
+            box-shadow: 0 10px 24px rgba(91, 59, 111, .2);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 78px 0 82px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 510px;
+            height: 510px;
+            right: -110px;
+            top: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #f2e7f5, #ead9ec 48%, rgba(234, 217, 236, 0) 70%);
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.02fr .98fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: 10px;
+            font-weight: 750;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1 {
+            max-width: 620px;
+            margin: 22px 0 20px;
+            font-family: var(--serif);
+            font-size: clamp(48px, 6vw, 78px);
+            font-weight: 500;
+            letter-spacing: -.055em;
+            line-height: .99;
+        }
+
+        h1 em {
+            color: var(--purple);
+            font-weight: 500;
+        }
+
+        .hero-copy {
+            max-width: 440px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 21px;
+            margin-top: 29px;
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 650;
+            transition: gap .2s ease;
+        }
+
+        .text-link:hover {
+            gap: 13px;
+            color: var(--purple);
+        }
+
+        .button .arrow {
+            font-size: 18px;
+            line-height: 0;
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-top: 44px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .avatars {
+            display: flex;
+            padding-left: 4px;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            margin-left: -4px;
+            border: 2px solid var(--cream);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--peach);
+            color: var(--deep);
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .avatar:nth-child(2) {
+            background: #d8c5e4;
+        }
+
+        .avatar:nth-child(3) {
+            background: #dfd9bf;
+        }
+
+        .avatar:nth-child(4) {
+            background: #efcdbb;
+        }
+
+        .hero-art {
+            min-height: 480px;
+            position: relative;
+            display: grid;
+            place-items: center;
+        }
+
+        .portrait-card {
+            position: relative;
+            width: min(350px, 78%);
+            height: 430px;
+            overflow: hidden;
+            border-radius: 180px 180px 22px 22px;
+            background: linear-gradient(150deg, #c6a8d7, #e4c7b8 68%, #cfafbd);
+            box-shadow: 0 24px 70px rgba(90, 64, 95, .16);
+            transform: rotate(2deg);
+        }
+
+        .portrait-card::before {
+            content: '';
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            top: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 48% 52% 50% 50%;
+            background: #f3d6bd;
+            box-shadow: inset -17px -6px 0 rgba(129, 83, 99, .09);
+        }
+
+        .portrait-card::after {
+            content: '';
+            position: absolute;
+            width: 270px;
+            height: 275px;
+            bottom: -88px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 48% 48% 0 0;
+            background: #644b69;
+        }
+
+        .hair {
+            position: absolute;
+            top: 32px;
+            left: 50%;
+            z-index: 1;
+            width: 212px;
+            height: 224px;
+            transform: translateX(-50%);
+            border-radius: 52% 48% 40% 40%;
+            background: #513d4c;
+            clip-path: polygon(0 0, 100% 0, 97% 78%, 82% 100%, 75% 47%, 60% 35%, 42% 48%, 23% 100%, 5% 82%);
+        }
+
+        .face-detail {
+            position: absolute;
+            z-index: 2;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 91px;
+            height: 50px;
+            border-top: 2px solid #61464d;
+            border-radius: 50%;
+        }
+
+        .face-detail::before,
+        .face-detail::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #40343b;
+        }
+
+        .face-detail::before {
+            left: 17px;
+        }
+
+        .face-detail::after {
+            right: 17px;
+        }
+
+        .earring {
+            position: absolute;
+            z-index: 3;
+            top: 180px;
+            left: calc(50% + 69px);
+            width: 13px;
+            height: 20px;
+            border: 2px solid #f2d992;
+            border-radius: 50%;
+        }
+
+        .spark {
+            position: absolute;
+            color: var(--purple);
+            font-size: 27px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .spark.one {
+            top: 48px;
+            left: 8%;
+        }
+
+        .spark.two {
+            right: 7%;
+            bottom: 90px;
+            font-size: 34px;
+            animation-delay: -2s;
+        }
+
+        .sticker {
+            position: absolute;
+            z-index: 4;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            border-radius: 50%;
+            font-family: var(--serif);
+            color: var(--deep);
+        }
+
+        .sticker.top {
+            top: 54px;
+            right: 1%;
+            width: 103px;
+            height: 103px;
+            background: var(--paper);
+            box-shadow: 0 12px 30px rgba(54, 38, 65, .1);
+            transform: rotate(9deg);
+            font-size: 14px;
+            line-height: 1.15;
+        }
+
+        .sticker.bottom {
+            bottom: 33px;
+            left: 0;
+            width: 91px;
+            height: 91px;
+            background: #d9c6e5;
+            transform: rotate(-12deg);
+            font-size: 12px;
+            line-height: 1.1;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-head {
+            max-width: 590px;
+            margin-bottom: 44px;
+        }
+
+        .section-head h2 {
+            margin: 15px 0 13px;
+            font-family: var(--serif);
+            font-size: clamp(38px, 4.8vw, 58px);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: 1.04;
+        }
+
+        .section-head p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.75;
+            font-size: 14px;
+        }
+
+        .about {
+            background: var(--paper);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: .92fr 1.08fr;
+            gap: 90px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            min-height: 390px;
+            border-radius: 6px 130px 6px 6px;
+            background: linear-gradient(145deg, #e9def1, #f4dfd1);
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 1px solid rgba(118, 81, 138, .28);
+            border-radius: 50%;
+            left: 50%;
+            top: 52%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 0 24px rgba(255, 255, 255, .18), 0 0 0 48px rgba(255, 255, 255, .12);
+        }
+
+        .about-visual::after {
+            content: 'L';
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-family: var(--serif);
+            font-size: 230px;
+            color: rgba(118, 81, 138, .72);
+            font-style: italic;
+        }
+
+        .since {
+            position: absolute;
+            z-index: 1;
+            right: 22px;
+            bottom: 22px;
+            padding: 16px 19px;
+            background: var(--paper);
+            border-radius: 3px 22px 3px 3px;
+            box-shadow: 0 10px 30px rgba(48, 36, 56, .09);
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .since strong {
+            display: block;
+            color: var(--deep);
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .about-copy h2 {
+            margin: 14px 0 20px;
+            font-family: var(--serif);
+            font-size: clamp(38px, 4.5vw, 55px);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: 1.04;
+        }
+
+        .about-copy h2 em {
+            color: var(--purple);
+        }
+
+        .about-copy p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+        .stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            padding-top: 23px;
+            border-top: 1px solid var(--line);
+        }
+
+        .stat strong {
+            display: block;
+            font-family: var(--serif);
+            color: var(--purple);
+            font-size: 30px;
+            font-weight: 500;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .services {
+            background: #eee6f1;
+        }
+
+        .services .section-head {
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .services .eyebrow {
+            justify-content: center;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .service-card {
+            position: relative;
+            min-height: 255px;
+            padding: 29px 27px;
+            background: rgba(255, 253, 249, .74);
+            border: 1px solid rgba(255, 255, 255, .8);
+            border-radius: 5px 50px 5px 5px;
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(77, 55, 88, .12);
+        }
+
+        .service-no {
+            color: #9c7aaa;
+            font-family: var(--serif);
+            font-size: 13px;
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            margin: 23px 0 17px;
+            border-radius: 50%;
+            background: #eee2f2;
+            color: var(--purple);
+            font-size: 20px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 9px;
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .quote {
+            padding: 76px 0;
+            background: var(--deep);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .quote blockquote {
+            max-width: 800px;
+            margin: 0 auto 22px;
+            font-family: var(--serif);
+            font-size: clamp(27px, 4vw, 44px);
+            line-height: 1.22;
+            font-weight: 400;
+            letter-spacing: -.025em;
+        }
+
+        .quote cite {
+            color: #c9b3d3;
+            font-size: 11px;
+            font-style: normal;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .contact {
+            background: var(--paper);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            align-items: center;
+            gap: 70px;
+        }
+
+        .contact-copy h2 {
+            margin: 14px 0;
+            font-family: var(--serif);
+            font-size: clamp(40px, 5vw, 60px);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -.05em;
+        }
+
+        .contact-copy p {
+            max-width: 390px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 19px;
+            margin-top: 29px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+            font-size: 13px;
+        }
+
+        .contact-icon {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: #eee4f1;
+            color: var(--purple);
+        }
+
+        .contact-item small {
+            display: block;
+            margin-bottom: 4px;
+            color: #9a909c;
+            font-size: 10px;
+        }
+
+        .map-card {
+            position: relative;
+            min-height: 335px;
+            overflow: hidden;
+            border-radius: 6px 100px 6px 6px;
+            background-color: #e9e5db;
+            background-image: linear-gradient(31deg, transparent 47%, rgba(255, 255, 255, .78) 48%, rgba(255, 255, 255, .78) 51%, transparent 52%), linear-gradient(116deg, transparent 40%, rgba(255, 255, 255, .65) 41%, rgba(255, 255, 255, .65) 44%, transparent 45%), linear-gradient(7deg, transparent 62%, rgba(255, 255, 255, .7) 63%, rgba(255, 255, 255, .7) 66%, transparent 67%), repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(128, 117, 116, .08) 49px, transparent 51px);
+        }
+
+        .map-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: .45;
+            background: radial-gradient(ellipse at 18% 22%, #d2dcc9 0 8%, transparent 8.5%), radial-gradient(ellipse at 85% 78%, #cbd8c5 0 11%, transparent 11.5%), radial-gradient(ellipse at 63% 17%, #d9dfcf 0 7%, transparent 7.5%);
+        }
+
+        .map-pin {
+            position: absolute;
+            left: 52%;
+            top: 45%;
+            width: 54px;
+            height: 54px;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: var(--purple);
+            border: 6px solid rgba(255, 255, 255, .7);
+            border-radius: 50% 50% 50% 8px;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            box-shadow: 0 7px 20px rgba(48, 36, 56, .2);
+        }
+
+        .map-pin span {
+            transform: rotate(45deg);
+            font-size: 17px;
+        }
+
+        .map-label {
+            position: absolute;
+            left: calc(52% + 35px);
+            top: 43%;
+            padding: 9px 13px;
+            background: var(--paper);
+            border-radius: 3px 16px 3px 3px;
+            box-shadow: 0 7px 20px rgba(48, 36, 56, .1);
+            color: var(--deep);
+            font-size: 11px;
+            font-weight: 650;
+        }
+
+        .map-label small {
+            display: block;
+            margin-top: 3px;
+            color: var(--muted);
+            font-weight: 400;
+        }
+
+        footer {
+            padding: 25px 0;
+            background: var(--paper);
+            border-top: 1px solid var(--line);
+        }
+
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: var(--purple);
+        }
+
+        .reveal {
+            animation: rise .8s both;
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-11px) rotate(12deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .wrap {
+                width: min(100% - 36px, 620px);
+            }
+
+            .nav {
+                min-height: 68px;
+            }
+
+            .nav-links {
+                gap: 17px;
+                font-size: 11px;
+            }
+
+            .nav-cta {
+                padding: 11px 15px;
+                font-size: 11px;
+            }
+
+            .hero {
+                padding: 54px 0 60px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr 0.8fr;
+                gap: 10px;
+            }
+
+            h1 {
+                font-size: clamp(48px, 8vw, 68px);
+            }
+
+            .hero-art {
+                min-height: 390px;
+            }
+
+            .portrait-card {
+                height: 350px;
+            }
+
+            .about-grid,
+            .contact-grid {
+                gap: 42px;
+            }
+
+            .about-visual {
+                min-height: 320px;
+            }
+
+            .service-grid {
+                gap: 11px;
+            }
+
+            .service-card {
+                padding: 23px 18px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .wrap {
+                width: calc(100% - 38px);
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                min-height: 66px;
+            }
+
+            .menu-toggle {
+                display: grid;
+                place-items: center;
+                width: 38px;
+                height: 38px;
+                border: 1px solid var(--line);
+                border-radius: 50%;
+                background: transparent;
+                color: var(--deep);
+                font-size: 18px;
+                cursor: pointer;
+                margin-left: auto;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                order: 3;
+                width: 100%;
+                padding: 4px 0 17px;
+                justify-content: space-between;
+                gap: 9px;
+            }
+
+            .nav-links:target,
+            .nav-links.open {
+                display: flex;
+            }
+
+            .hero {
+                padding: 45px 0 48px;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                max-width: 500px;
+                margin-top: 17px;
+                font-size: clamp(49px, 13vw, 68px);
+            }
+
+            .hero-copy {
+                font-size: 14px;
+            }
+
+            .hero-note {
+                margin-top: 27px;
+            }
+
+            .hero-art {
+                min-height: 370px;
+                margin-top: 5px;
+            }
+
+            .portrait-card {
+                width: 260px;
+                height: 340px;
+            }
+
+            .sticker.top {
+                right: 5%;
+                top: 18px;
+            }
+
+            .sticker.bottom {
+                left: 4%;
+                bottom: 18px;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .about-visual {
+                min-height: 290px;
+                border-top-right-radius: 100px;
+            }
+
+            .about-visual::after {
+                font-size: 190px;
+            }
+
+            .about-copy h2,
+            .contact-copy h2 {
+                font-size: 43px;
+            }
+
+            .stats {
+                gap: 25px;
+            }
+
+            .stat strong {
+                font-size: 27px;
+            }
+
+            .services .section-head {
+                margin-bottom: 30px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .service-card {
+                min-height: auto;
+                padding: 22px 23px;
+                border-top-right-radius: 38px;
+            }
+
+            .service-icon {
+                margin: 15px 0 11px;
+            }
+
+            .quote {
+                padding: 60px 0;
+            }
+
+            .map-card {
+                min-height: 270px;
+                border-top-right-radius: 75px;
+            }
+
+            .footer-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="wrap nav">
+            <a class="brand" href="#home" aria-label="Lila — на главную"><span
+                    class="brand-mark"><span>l</span></span>lila</a>
+            <button class="menu-toggle" aria-label="Показать меню"
+                onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', document.querySelector('.nav-links').classList.contains('open'))">☰</button>
+            <nav class="nav-links" aria-label="Основная навигация">
+                <a href="#about">О нас</a><a href="#services">Блогерам</a><a href="#contact">Контакты</a>
+            </nav>
+            <a class="nav-cta" href="mailto:hello@lila.agency">Обсудить проект <span>↗</span></a>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div class="wrap hero-grid">
+                <div class="reveal">
+                    <span class="eyebrow">агентство блогеров нового поколения</span>
+                    <h1>Твой голос.<br>Твоя сцена.<br><em>Твой рост.</em></h1>
+                    <p class="hero-copy">Помогаем талантливым авторам превращать творчество в любимое дело, а брендам —
+                        находить людей, которым верят.</p>
+                    <div class="hero-actions"><a class="button" href="#contact">Начать с нами <span
+                                class="arrow">↗</span></a><a class="text-link" href="#about">Узнать о Lila
+                            <span>→</span></a></div>
+                    <div class="hero-note">
+                        <div class="avatars"><span class="avatar">А</span><span class="avatar">М</span><span
+                                class="avatar">Л</span><span class="avatar">С</span></div><span>Растём вместе с 60+
+                            авторами</span>
+                    </div>
+                </div>
+                <div class="hero-art" aria-label="Иллюстрация креатора">
+                    <span class="spark one">✳</span><span class="spark two">✦</span>
+                    <div class="portrait-card">
+                        <div class="hair"></div>
+                        <div class="face-detail"></div>
+                        <div class="earring"></div>
+                    </div>
+                    <div class="sticker top">создавай<br>своё ✳</div>
+                    <div class="sticker bottom">будь<br>заметной</div>
+                </div>
+            </div>
+        </section>
+        <section class="about" id="about">
+            <div class="wrap about-grid">
+                <div class="about-visual">
+                    <div class="since"><strong>2020</strong>год, когда всё началось</div>
+                </div>
+                <div class="about-copy"><span class="eyebrow">наша история</span>
+                    <h2>Мы верим в силу <em>настоящих</em> историй</h2>
+                    <p>Lila началась с простого вопроса: почему талантливым авторам так часто приходится выбирать между
+                        творчеством и стабильностью? Мы собрали команду, которая помогает расти и тем, кто создаёт
+                        контент, и тем, кто хочет говорить с аудиторией по-настоящему.</p>
+                    <p>Сегодня мы — независимое агентство с человеческим подходом. Знакомимся, слушаем и строим долгие
+                        партнёрства, в которых у каждого есть место для своего голоса.</p>
+                    <div class="stats">
+                        <div class="stat"><strong>60+</strong><span>авторов в команде</span></div>
+                        <div class="stat"><strong>240+</strong><span>успешных интеграций</span></div>
+                        <div class="stat"><strong>12</strong><span>человек в команде</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="services" id="services">
+            <div class="wrap">
+                <div class="section-head"><span class="eyebrow">расти в своём темпе</span>
+                    <h2>Мы берём на себя заботу о главном</h2>
+                    <p>Ты создаёшь то, что любишь. Мы помогаем, чтобы творчество приносило радость, возможности и доход.
+                    </p>
+                </div>
+                <div class="service-grid">
+                    <article class="service-card"><span class="service-no">01 / стратегия</span>
+                        <div class="service-icon">✧</div>
+                        <h3>Личный бренд</h3>
+                        <p>Вместе найдём твою сильную сторону, сформулируем позиционирование и составим план развития.
+                        </p>
+                    </article>
+                    <article class="service-card"><span class="service-no">02 / партнёрства</span>
+                        <div class="service-icon">♡</div>
+                        <h3>Бренды и сделки</h3>
+                        <p>Подберём подходящие проекты, обсудим условия и позаботимся, чтобы сотрудничество было
+                            комфортным.</p>
+                    </article>
+                    <article class="service-card"><span class="service-no">03 / поддержка</span>
+                        <div class="service-icon">✿</div>
+                        <h3>Команда рядом</h3>
+                        <p>Менеджер, юрист и продюсер помогут с организацией, документами и важными решениями.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <div class="quote">
+            <div class="wrap">
+                <blockquote>«Когда рядом правильные люди, смелее пробуешь новое и остаёшься собой»</blockquote>
+                <cite>Команда Lila</cite>
+            </div>
+        </div>
+        <section class="contact" id="contact">
+            <div class="wrap contact-grid">
+                <div class="contact-copy"><span class="eyebrow">давай знакомиться</span>
+                    <h2>Твоя следующая глава начинается здесь</h2>
+                    <p>Расскажи нам о себе или своей задаче — мы ответим и подумаем, чем можем быть полезны.</p>
+                    <div class="contact-list"><a class="contact-item" href="mailto:hello@lila.agency"><span
+                                class="contact-icon">✉</span><span><small>Почта</small>hello@lila.agency</span></a><a
+                            class="contact-item" href="tel:+74951234567"><span
+                                class="contact-icon">↗</span><span><small>Телефон</small>+7 (495) 123-45-67</span></a>
+                        <div class="contact-item"><span class="contact-icon">⌖</span><span><small>Мы
+                                    находимся</small>Москва, Хлебный переулок, 19</span></div>
+                    </div>
+                </div>
+                <div class="map-card" role="img" aria-label="Схематичная карта района Хлебного переулка в Москве">
+                    <div class="map-pin"><span>⌖</span></div>
+                    <div class="map-label">Lila agency<small>Москва, центр</small></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="wrap footer-row"><a class="brand" href="#home"><span
+                    class="brand-mark"><span>l</span></span>lila</a><span>© 2025 Lila Agency. С теплом к
+                создателям.</span>
+            <div class="footer-links"><a href="#about">О нас</a><a href="#services">Блогерам</a><a
+                    href="mailto:hello@lila.agency">Почта</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>
