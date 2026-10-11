@@ -641,6 +641,41 @@
             text-transform: uppercase;
         }
 
+        .image-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 960px;
+            margin: 46px auto 0;
+        }
+
+        .image-row figure {
+            margin: 0;
+        }
+
+        .image-row img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: 5px 50px 5px 5px;
+            transition: transform .28s ease, box-shadow .28s ease;
+        }
+
+        .image-row img:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, .35);
+        }
+
+        .image-row figcaption {
+            margin-top: 12px;
+            color: #c9b3d3;
+            font-family: var(--serif);
+            font-size: 15px;
+            letter-spacing: .01em;
+        }
+
         .contact {
             background: var(--paper);
         }
@@ -876,6 +911,10 @@
             .service-card {
                 padding: 23px 18px;
             }
+
+            .image-row {
+                gap: 11px;
+            }
         }
 
         @media (max-width: 600px) {
@@ -1003,6 +1042,13 @@
                 gap: 12px;
             }
 
+            .image-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                max-width: 340px;
+                margin-top: 34px;
+            }
+
             .service-card {
                 min-height: auto;
                 padding: 22px 23px;
@@ -1125,6 +1171,23 @@
             <div class="wrap">
                 <blockquote>«Когда рядом правильные люди, смелее пробуешь новое и остаёшься собой»</blockquote>
                 <cite>Команда Lila</cite>
+                <div class="image-row">
+                    <figure>
+                        <img src="dmitry-tomashek-a64vIlJBV9Q-unsplash.jpg"
+                            alt="Человек снимает интерьер собора на телефон" loading="lazy">
+                        <figcaption>Пробуем новое</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="jana-shnipelson-bTZIbKZ8Ioc-unsplash.jpg"
+                            alt="Девушка в наушниках снимает видео на стабилизатор" loading="lazy">
+                        <figcaption>Создаём вместе</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="laura-chouette-enQcrUMOp_U-unsplash.jpg"
+                            alt="Девушка делает селфи, сидя на жёлтом кубе" loading="lazy">
+                        <figcaption>Остаёмся собой</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
         <section class="contact" id="contact">
